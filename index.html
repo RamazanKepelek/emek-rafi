@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Emek Rafı'nda el yapımı seramik, ahşap, tekstil, takı ve dekorasyon ürünlerini keşfedin.">
+    <meta name="theme-color" content="#244A3D">
+    <title>Emek Rafı | El Emeği Ürünler</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="assets/style.css" rel="stylesheet">
+</head>
+
+<body id="top">
+
+    <nav class="navbar navbar-expand-lg navbar-dark er-navbar sticky-top">
+        <div class="container">
+
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-basket2" aria-hidden="true"></i>
+                Emek Rafı
+            </a>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#anaMenu"
+                aria-controls="anaMenu"
+                aria-expanded="false"
+                aria-label="Menüyü aç veya kapat">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="anaMenu">
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Ana Sayfa</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/urunler.html">Ürünler</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/kampanyalar.html">Kampanyalar</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Kategoriler
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="pages/urunler.html?kategori=seramik">Seramik</a></li>
+                            <li><a class="dropdown-item" href="pages/urunler.html?kategori=ahsap">Ahşap</a></li>
+                            <li><a class="dropdown-item" href="pages/urunler.html?kategori=tekstil">Tekstil</a></li>
+                            <li><a class="dropdown-item" href="pages/urunler.html?kategori=taki">Takı ve Aksesuar</a></li>
+                            <li><a class="dropdown-item" href="pages/urunler.html?kategori=aydinlatma">Aydınlatma</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="pages/urunler.html">Tüm Ürünler</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/iletisim.html">İletişim</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/hakkimizda.html">Hakkımızda</a>
+                    </li>
+                </ul>
+
+                <form class="d-flex me-lg-2 mb-3 mb-lg-0" role="search" action="pages/urunler.html" method="get">
+                    <input
+                        class="form-control form-control-sm me-2"
+                        type="search"
+                        name="q"
+                        placeholder="Ürün ara..."
+                        aria-label="Ürün ara">
+
+                    <button class="btn btn-sm btn-outline-light" type="submit" aria-label="Ara">
+                        <i class="bi bi-search" aria-hidden="true"></i>
+                    </button>
+                </form>
+
+                <div class="d-flex align-items-center flex-wrap gap-2">
+
+                    <button class="btn btn-sm btn-outline-light" data-er-theme-toggle type="button">
+                        <i class="bi bi-moon-stars" aria-hidden="true"></i>
+                        Karanlık Mod
+                    </button>
+
+                    <a href="pages/giris.html" class="btn btn-sm btn-outline-light">
+                        <i class="bi bi-person" aria-hidden="true"></i>
+                        Giriş Yap
+                    </a>
+
+                    <a href="pages/sepet.html" class="btn btn-sm btn-warning position-relative">
+                        <i class="bi bi-basket2" aria-hidden="true"></i>
+                        Sepet
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger er-cart-badge d-none"
+                            data-er-cart-count>0</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="er-hero">
+        <div class="container position-relative">
+
+            <div class="row align-items-center gy-4">
+
+                <div class="col-lg-7">
+                    <p class="er-eyebrow mb-2">El emeği, göz nuru</p>
+
+                    <h1 class="display-4 er-letter-tight mb-3">
+                        Her parçada emek<br>
+                        her köşede hikâye.
+                    </h1>
+
+                    <p class="lead er-max-w-640" style="color: rgba(247,244,238,.85)">
+                        Emek Rafı, bağımsız üreticilerin el yapımı seramik, ahşap, tekstil ve dekorasyon ürünlerini bir araya getirir. Yaşam alanınıza özgün dokunuşlar katın.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-2 mt-4">
+                        <a href="pages/urunler.html" class="btn btn-warning btn-lg">
+                            Ürünleri Keşfet
+                        </a>
+
+                        <a href="#kategoriler" class="btn btn-outline-light btn-lg">
+                            Kategorileri Keşfet
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div id="anaCarousel" class="carousel slide er-card" data-bs-ride="carousel">
+
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#anaCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slayt 1"></button>
+                            <button type="button" data-bs-target="#anaCarousel" data-bs-slide-to="1" aria-label="Slayt 2"></button>
+                            <button type="button" data-bs-target="#anaCarousel" data-bs-slide-to="2" aria-label="Slayt 3"></button>
+                        </div>
+
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="er-card-img-wrap" style="aspect-ratio: 16 / 10;">
+                                    <span class="fs-3">🏺 El Yapımı Seramikler</span>
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <div class="er-card-img-wrap" style="aspect-ratio: 16 / 10;">
+                                    <span class="fs-3">🪵 Doğal Ahşap Tasarımlar</span>
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <div class="er-card-img-wrap" style="aspect-ratio: 16 / 10;">
+                                    <span class="fs-3">🧶 El Dokuması Ürünler</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#anaCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Önceki</span>
+                        </button>
+
+                        <button class="carousel-control-next" type="button" data-bs-target="#anaCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Sonraki</span>
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="er-section" id="kategoriler">
+            <div class="container">
+
+                <h2 class="er-section-title">Kategorilere Göz Atın</h2>
+
+                <div class="er-mosaic">
+
+                    <a href="pages/urunler.html?kategori=seramik" class="er-mosaic-item">
+                        <div class="d-flex flex-column justify-content-end h-100">
+                            <span class="fs-3" aria-hidden="true">🏺</span>
+                            <span class="fs-5">Seramik</span>
+                        </div>
+                    </a>
+
+                    <a href="pages/urunler.html?kategori=ahsap" class="er-mosaic-item">
+                        <div class="d-flex flex-column justify-content-end h-100">
+                            <span class="fs-3" aria-hidden="true">🪵</span>
+                            <span class="fs-5">Ahşap Tasarımlar</span>
+                        </div>
+                    </a>
+
+                    <a href="pages/urunler.html?kategori=tekstil" class="er-mosaic-item">
+                        <div class="d-flex flex-column justify-content-end h-100">
+                            <span class="fs-3" aria-hidden="true">🧶</span>
+                            <span class="fs-5">Tekstil</span>
+                        </div>
+                    </a>
+
+                    <a href="pages/urunler.html?kategori=taki" class="er-mosaic-item">
+                        <div class="d-flex flex-column justify-content-end h-100">
+                            <span class="fs-3" aria-hidden="true">💍</span>
+                            <span class="fs-5">Takı ve Aksesuar</span>
+                        </div>
+                    </a>
+
+                    <a href="pages/urunler.html?kategori=aydinlatma" class="er-mosaic-item">
+                        <div class="d-flex flex-column justify-content-end h-100">
+                            <span class="fs-3" aria-hidden="true">💡</span>
+                            <span class="fs-5">Aydınlatma</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="er-section er-products" id="one-cikanlar">
+            <div class="container">
+
+                <div class="er-section-heading">
+                    <div>
+                        <p class="er-eyebrow mb-2">Atölyelerden seçtiklerimiz</p>
+                        <h2 class="er-section-title">Öne Çıkan Ürünler</h2>
+                    </div>
+
+                    <a href="pages/urunler.html" class="er-view-all">
+                        Tüm Ürünler <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
+
+                    <div class="col">
+                        <div class="card er-product-card h-100">
+                            <div class="er-product-image">
+                                <span class="fs-1" aria-hidden="true">🏺</span>
+                            </div>
+
+                            <div class="card-body d-flex flex-column">
+                                <span class="er-product-label">Atölye seçimi</span>
+                                <h3 class="h5">El Yapımı Seramik Vazo</h3>
+                                <p class="er-product-description">Doğal dokusu ve kendine özgü formuyla el yapımı seramik.</p>
+
+                                <div class="er-product-bottom">
+                                    <span class="er-price">₺450</span>
+                                    <button
+                                        class="btn er-add-to-cart"
+                                        type="button"
+                                        data-er-add-to-cart
+                                        data-er-product-id="v001"
+                                        data-er-price="450"
+                                        data-er-emoji="🏺"
+                                        data-er-product-name="El Yapımı Seramik Vazo">
+                                        <i class="bi bi-basket2" aria-hidden="true"></i>
+                                        Sepete Ekle
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card er-product-card h-100">
+                            <div class="er-product-image">
+                                <span class="fs-1" aria-hidden="true">🪵</span>
+                            </div>
+
+                            <div class="card-body d-flex flex-column">
+                                <span class="er-product-label">Doğal malzeme</span>
+                                <h3 class="h5">Ceviz Ağacından Kesme Tahtası</h3>
+                                <p class="er-product-description">Doğal ceviz ağacından hazırlanan sade ve kullanışlı tasarım.</p>
+
+                                <div class="er-product-bottom">
+                                    <span class="er-price">₺320</span>
+                                    <button
+                                        class="btn er-add-to-cart"
+                                        type="button"
+                                        data-er-add-to-cart
+                                        data-er-product-id="v002"
+                                        data-er-price="320"
+                                        data-er-emoji="🪵"
+                                        data-er-product-name="Ceviz Ağacından Kesme Tahtası">
+                                        <i class="bi bi-basket2" aria-hidden="true"></i>
+                                        Sepete Ekle
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card er-product-card h-100">
+                            <div class="er-product-image">
+                                <span class="fs-1" aria-hidden="true">🧶</span>
+                            </div>
+
+                            <div class="card-body d-flex flex-column">
+                                <span class="er-product-label">Sınırlı üretim</span>
+                                <h3 class="h5">El Dokuma Yün Atkı</h3>
+                                <p class="er-product-description">Doğal dokusu ve sıcak tutan yapısıyla el dokuması atkı.</p>
+
+                                <div class="er-product-bottom">
+                                    <span class="er-price">₺275</span>
+                                    <button
+                                        class="btn er-add-to-cart"
+                                        type="button"
+                                        data-er-add-to-cart
+                                        data-er-product-id="v003"
+                                        data-er-price="275"
+                                        data-er-emoji="🧶"
+                                        data-er-product-name="El Dokuma Yün Atkı">
+                                        <i class="bi bi-basket2" aria-hidden="true"></i>
+                                        Sepete Ekle
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card er-product-card h-100">
+                            <div class="er-product-image">
+                                <span class="fs-1" aria-hidden="true">💍</span>
+                            </div>
+
+                            <div class="card-body d-flex flex-column">
+                                <span class="er-product-label">El işçiliği</span>
+                                <h3 class="h5">Gümüş Telkari Yüzük</h3>
+                                <p class="er-product-description">İnce detaylarıyla öne çıkan, el işçiliğiyle hazırlanmış yüzük.</p>
+
+                                <div class="er-product-bottom">
+                                    <span class="er-price">₺890</span>
+                                    <button
+                                        class="btn er-add-to-cart"
+                                        type="button"
+                                        data-er-add-to-cart
+                                        data-er-product-id="v004"
+                                        data-er-price="890"
+                                        data-er-emoji="💍"
+                                        data-er-product-name="Gümüş Telkari Yüzük">
+                                        <i class="bi bi-basket2" aria-hidden="true"></i>
+                                        Sepete Ekle
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card er-product-card h-100">
+                            <div class="er-product-image">
+                                <span class="fs-1" aria-hidden="true">☕</span>
+                            </div>
+
+                            <div class="card-body d-flex flex-column">
+                                <span class="er-product-label">Günlük kullanım</span>
+                                <h3 class="h5">El Yapımı Seramik Kupa</h3>
+                                <p class="er-product-description">Her biri kendine özgü küçük farklılıklar taşıyan seramik kupa.</p>
+
+                                <div class="er-product-bottom">
+                                    <span class="er-price">₺380</span>
+                                    <button
+                                        class="btn er-add-to-cart"
+                                        type="button"
+                                        data-er-add-to-cart
+                                        data-er-product-id="v005"
+                                        data-er-price="380"
+                                        data-er-emoji="☕"
+                                        data-er-product-name="El Yapımı Seramik Kupa">
+                                        <i class="bi bi-basket2" aria-hidden="true"></i>
+                                        Sepete Ekle
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="er-section" id="neden-emek-rafi">
+            <div class="container">
+
+                <h2 class="er-section-title">Neden Emek Rafı?</h2>
+
+                <div class="row g-4 text-center">
+
+                    <div class="col-md-4">
+                        <div class="fs-1 mb-2" aria-hidden="true">📦</div>
+                        <h3 class="h5">Özenli Paketleme</h3>
+                        <p>El yapımı ürünlerin güvenle ulaşması için her siparişe özen gösterilir.</p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="fs-1 mb-2" aria-hidden="true">🤝</div>
+                        <h3 class="h5">Üreticiyi Destekle</h3>
+                        <p>Bağımsız üreticilerin tasarımlarını keşfet, el emeğine değer kat.</p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="fs-1 mb-2" aria-hidden="true">🌿</div>
+                        <h3 class="h5">Özgün Tasarımlar</h3>
+                        <p>Seramikten tekstile kadar farklı atölyelerin kendine özgü işlerini bul.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="er-stats" aria-label="Emek Rafı istatistikleri">
+            <div class="container">
+
+                <div class="er-stats-grid">
+                    <div class="er-stat">
+                        <span class="er-stat-number">500+</span>
+                        <span class="er-stat-label">Örnek Ürün</span>
+                    </div>
+
+                    <div class="er-stat">
+                        <span class="er-stat-number">80+</span>
+                        <span class="er-stat-label">Üretici Hedefi</span>
+                    </div>
+
+                    <div class="er-stat">
+                        <span class="er-stat-number">%99</span>
+                        <span class="er-stat-label">Teslimat Hedefi</span>
+                    </div>
+
+                    <div class="er-stat">
+                        <span class="er-stat-number">%100</span>
+                        <span class="er-stat-label">El Emeği Odaklı</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="er-newsletter" aria-labelledby="newsletterTitle">
+            <div class="container">
+
+                <div class="er-newsletter-content">
+                    <p class="er-eyebrow">Atölyelerden haberler</p>
+                    <h2 id="newsletterTitle">Yeni keşiflere yer açın.</h2>
+                    <p>Yeni ürünleri ve üreticileri keşfetmek için Emek Rafı'ndan haberdar olun.</p>
+
+                    <form class="er-newsletter-form" id="bultenForm">
+                        <label for="bultenEmail" class="visually-hidden">E-posta adresiniz</label>
+
+                        <input
+                            type="email"
+                            id="bultenEmail"
+                            name="email"
+                            class="form-control"
+                            placeholder="E-posta adresiniz"
+                            autocomplete="email"
+                            required>
+
+                        <button type="submit" class="btn er-newsletter-button">
+                            Abone Ol
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="er-footer">
+        <div class="container">
+
+            <div class="er-footer-grid">
+
+                <div class="er-footer-brand">
+                    <a href="index.html" class="er-footer-logo">
+                        <i class="bi bi-basket2" aria-hidden="true"></i>
+                        Emek Rafı
+                    </a>
+
+                    <p>Bağımsız üreticilerin emeğini ve özgün tasarımlarını bir araya getiren bir keşif alanı.</p>
+                </div>
+
+                <div>
+                    <h2>Mağaza</h2>
+                    <ul>
+                        <li><a href="pages/urunler.html">Tüm Ürünler</a></li>
+                        <li><a href="#kategoriler">Kategoriler</a></li>
+                        <li><a href="pages/kampanyalar.html">Kampanyalar</a></li>
+                        <li><a href="pages/sepet.html">Sepetim</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2>Kurumsal</h2>
+                    <ul>
+                        <li><a href="pages/hakkimizda.html">Hakkımızda</a></li>
+                        <li><a href="pages/iletisim.html">İletişim</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2>Yardım</h2>
+                    <ul>
+                        <li><a href="pages/iletisim.html">Kargo Bilgisi</a></li>
+                        <li><a href="pages/iletisim.html">İade Politikası</a></li>
+                        <li><a href="pages/iletisim.html">Sıkça Sorulan Sorular</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="er-footer-bottom">
+                <p>&copy; 2026 Emek Rafı. Eğitim amaçlı demo proje.</p>
+                <a href="#top">Yukarı çık ↑</a>
+            </div>
+
+        </div>
+    </footer>
+
+    <div
+        class="toast-container position-fixed bottom-0 end-0 p-3"
+        id="erToastContainer"
+        aria-live="polite"
+        aria-atomic="true"
+        style="z-index: 1080;">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="Js/script.js"></script>
+
+</body>
+</html>s

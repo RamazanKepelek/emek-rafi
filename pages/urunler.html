@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürünler | Emek Rafı</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark er-navbar sticky-top">
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">🌿 Emek Rafı</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#erAnaMenu" aria-controls="erAnaMenu" aria-expanded="false" aria-label="Menüyü aç/kapat">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="erAnaMenu">
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Ana Sayfa</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="urunler.html" aria-current="page">Ürünler</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="kampanyalar.html">Kampanyalar</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="hakkimizda.html">Hakkımızda</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="iletisim.html">İletişim</a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center gap-2 flex-wrap">
+
+                    <button class="btn btn-sm btn-outline-light" data-er-theme-toggle type="button">
+                        <i class="bi bi-moon-stars"></i> Karanlık Mod
+                    </button>
+
+                    <a href="giris.html" class="btn btn-sm btn-outline-light">Giriş Yap</a>
+
+                    <a href="sepet.html" class="btn btn-sm btn-light position-relative">
+                        <i class="bi bi-basket"></i> Sepet
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" data-er-cart-count>0</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <main class="container py-4">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Ana Sayfa</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Ürünler
+                </li>
+            </ol>
+        </nav>
+
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+            <h1 class="h3 mb-0">
+                El Emeği Ürünler
+                <span class="text-muted fs-6" id="erUrunSayisi" aria-live="polite"></span>
+            </h1>
+
+            <button class="btn btn-outline-secondary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#erFiltreOffcanvas" aria-controls="erFiltreOffcanvas">
+                <i class="bi bi-sliders"></i> Filtrele
+            </button>
+        </div>
+
+
+        <div class="row g-3 mb-4">
+
+            <div class="col-md-8">
+                <label for="erUrunArama" class="visually-hidden">Ürün ara</label>
+                <input type="search" class="form-control" id="erUrunArama" placeholder="Ürün ara...">
+            </div>
+
+            <div class="col-md-4">
+                <label for="erUrunSirala" class="visually-hidden">Ürünleri sırala</label>
+                <select class="form-select" id="erUrunSirala">
+                    <option value="varsayilan">Öne Çıkanlar</option>
+                    <option value="artan">Fiyat: Düşükten Yükseğe</option>
+                    <option value="azalan">Fiyat: Yüksekten Düşüğe</option>
+                    <option value="yeni">En Yeniler</option>
+                </select>
+            </div>
+
+        </div>
+
+        
+        <div class="row g-4">
+
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div class="border rounded-3 p-3">
+
+                    <h2 class="h6 text-uppercase mb-3">Kategoriler</h2>
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="erKatSeramik" data-er-category="seramik">
+                        <label class="form-check-label" for="erKatSeramik">Seramik</label>
+                    </div>
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="erKatAhsap" data-er-category="ahsap">
+                        <label class="form-check-label" for="erKatAhsap">Ahşap</label>
+                    </div>
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="erKatTekstil" data-er-category="tekstil">
+                        <label class="form-check-label" for="erKatTekstil">Tekstil</label>
+                    </div>
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="erKatTaki" data-er-category="taki">
+                        <label class="form-check-label" for="erKatTaki">Takı</label>
+                    </div>
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="erKatAydinlatma" data-er-category="aydinlatma">
+                        <label class="form-check-label" for="erKatAydinlatma">Aydınlatma</label>
+                    </div>
+
+                    <hr>
+
+                    <h2 class="h6 text-uppercase mb-3">Fiyat Aralığı</h2>
+
+                    <label for="erFiyatRange" class="form-label small">
+                        En fazla: <strong id="erFiyatEtiket">1000₺</strong>
+                    </label>
+
+                    <input type="range" class="form-range" min="0" max="1000" step="50" value="1000" id="erFiyatRange">
+
+                    <hr>
+
+                    <h2 class="h6 text-uppercase mb-3">Puan</h2>
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="erPuan" id="erPuan0" value="0" checked>
+                        <label class="form-check-label" for="erPuan0">Tümü</label>
+                    </div>
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="erPuan" id="erPuan4" value="4">
+                        <label class="form-check-label" for="erPuan4">⭐⭐⭐⭐ ve üzeri</label>
+                    </div>
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="erPuan" id="erPuan3" value="3">
+                        <label class="form-check-label" for="erPuan3">⭐⭐⭐ ve üzeri</label>
+                    </div>
+
+                    <button type="button" class="btn btn-sm btn-outline-secondary w-100 mt-3" id="erFiltreTemizle">
+                        Filtreleri Temizle
+                    </button>
+
+                </div>
+            </aside>
+
+
+            <section class="col-lg-9">
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4" id="erUrunGrid">
+
+                    <div class="col er-urun" data-id="v001" data-er-category="seramik" data-er-price="450" data-er-rating="4.5" data-er-name="El Yapımı Toprak Vazo">
+                        <div class="card er-product-card h-100">
+                            <div class="er-product-image">
+                                <span class="fs-1">🏺</span>
+                            </div>
+
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge text-bg-warning align-self-start mb-2">Çok Satan</span>
+                                <h2 class="h6 card-title">
+                                    <a href="urun-detay.html" class="text-decoration-none text-reset">El Yapımı Toprak Vazo</a>
+                                </h2>
+
+                                <p class="card-text text-muted small">Konya atölyelerinden</p>
+
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <span class="er-price">₺450</span>
+                                    <button class="btn btn-sm btn-outline-success" type="button" data-er-add-to-cart data-er-product-id="v001" data-er-price="450" data-er-emoji="🏺" data-er-product-name="El Yapımı Toprak Vazo">+ Sepet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col er-urun" data-id="v002" data-er-category="ahsap" data-er-price="320" data-er-rating="4.0" data-er-name="Ceviz Kesme Tahtası">
+                        <div class="card er-product-card h-100">
+                            <div class="er-product-image">
+                                <span class="fs-1">🪵</span>
+                            </div>
+
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge text-bg-danger align-self-start mb-2">-%20</span>
+                                <h2 class="h6 card-title">
+                                    <a href="urun-detay.html" class="text-decoration-none text-reset">Ceviz Kesme Tahtası</a>
+                                </h2>
+
+                                <p class="card-text text-muted small">Doğal ceviz ağacı</p>
+
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <span class="er-price">₺320</span>
+                                    <button class="btn btn-sm btn-outline-success" type="button" data-er-add-to-cart data-er-product-id="v002" data-er-price="320" data-er-emoji="🪵" data-er-product-name="Ceviz Kesme Tahtası">+ Sepet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col er-urun" data-id="v003" data-er-category="tekstil" data-er-price="275" data-er-rating="4.8" data-er-name="El Dokuma Yün Atkı">
+                        <div class="card er-product-card h-100">
+                            <div class="er-product-image">
+                                <span class="fs-1">🧶</span>
+                            </div>
+
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge text-bg-info align-self-start mb-2">Yeni</span>
+                                <h2 class="h6 card-title">
+                                    <a href="urun-detay.html" class="text-decoration-none text-reset">El Dokuma Yün Atkı</a>
+                                </h2>
+
+                                <p class="card-text text-muted small">%100 doğal yün</p>
+
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <span class="er-price">₺275</span>
+                                    <button class="btn btn-sm btn-outline-success" type="button" data-er-add-to-cart data-er-product-id="v003" data-er-price="275" data-er-emoji="🧶" data-er-product-name="El Dokuma Yün Atkı">+ Sepet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col er-urun" data-id="v004" data-er-category="taki" data-er-price="890" data-er-rating="3.5" data-er-name="Gümüş Telkari Yüzük">
+                        <div class="card er-product-card h-100">
+                            <div class="er-product-image">
+                                <span class="fs-1">💍</span>
+                            </div>
+
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge text-bg-secondary align-self-start mb-2">Sınırlı Stok</span>
+                                <h2 class="h6 card-title">
+                                    <a href="urun-detay.html" class="text-decoration-none text-reset">Gümüş Telkari Yüzük</a>
+                                </h2>
+
+                                <p class="card-text text-muted small">Midyat ustalarından</p>
+
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <span class="er-price">₺890</span>
+                                    <button class="btn btn-sm btn-outline-success" type="button" data-er-add-to-cart data-er-product-id="v004" data-er-price="890" data-er-emoji="💍" data-er-product-name="Gümüş Telkari Yüzük">+ Sepet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col er-urun" data-id="v005" data-er-category="aydinlatma" data-er-price="610" data-er-rating="4.2" data-er-name="El Yapımı Bambu Lamba">
+                        <div class="card er-product-card h-100">
+                            <div class="er-product-image">
+                                <span class="fs-1">💡</span>
+                            </div>
+
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge text-bg-success align-self-start mb-2">El Yapımı</span>
+                                <h2 class="h6 card-title">
+                                    <a href="urun-detay.html" class="text-decoration-none text-reset">El Yapımı Bambu Lamba</a>
+                                </h2>
+
+                                <p class="card-text text-muted small">Sıcak ışık tonlu</p>
+
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <span class="er-price">₺610</span>
+                                    <button class="btn btn-sm btn-outline-success" type="button" data-er-add-to-cart data-er-product-id="v005" data-er-price="610" data-er-emoji="💡" data-er-product-name="El Yapımı Bambu Lamba">+ Sepet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col er-urun" data-id="v006" data-er-category="seramik" data-er-price="380" data-er-rating="3.0" data-er-name="Çini Desenli Tabak">
+                        <div class="card er-product-card h-100">
+                            <div class="er-product-image">
+                                <span class="fs-1">🍽️</span>
+                            </div>
+
+                            <div class="card-body d-flex flex-column">
+                                <h2 class="h6 card-title">
+                                    <a href="urun-detay.html" class="text-decoration-none text-reset">Çini Desenli Tabak</a>
+                                </h2>
+
+                                <p class="card-text text-muted small">Kütahya el işi</p>
+
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <span class="er-price">₺380</span>
+                                    <button class="btn btn-sm btn-outline-success" type="button" data-er-add-to-cart data-er-product-id="v006" data-er-price="380" data-er-emoji="🍽️" data-er-product-name="Çini Desenli Tabak">+ Sepet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div id="erSonucYok" class="text-center py-5 d-none">
+                    <div class="display-3">🔍</div>
+                    <h2 class="h5 mt-2">Aradığınız kriterlere uygun ürün bulunamadı</h2>
+                    <button class="btn btn-outline-secondary mt-2" id="erSonucTemizle" type="button">Filtreleri Temizle</button>
+                </div>
+
+            </section>
+        </div>
+
+    </main>
+
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="erFiltreOffcanvas" aria-labelledby="erFiltreOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h2 class="offcanvas-title h5" id="erFiltreOffcanvasLabel">Filtrele</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Kapat"></button>
+        </div>
+
+        <div class="offcanvas-body">
+
+            <h3 class="h6 text-uppercase mb-3">Kategoriler</h3>
+
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="erMobilSeramik" data-er-category="seramik">
+                <label class="form-check-label" for="erMobilSeramik">Seramik</label>
+            </div>
+
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="erMobilAhsap" data-er-category="ahsap">
+                <label class="form-check-label" for="erMobilAhsap">Ahşap</label>
+            </div>
+
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="erMobilTekstil" data-er-category="tekstil">
+                <label class="form-check-label" for="erMobilTekstil">Tekstil</label>
+            </div>
+
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="erMobilTaki" data-er-category="taki">
+                <label class="form-check-label" for="erMobilTaki">Takı</label>
+            </div>
+
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="erMobilAydinlatma" data-er-category="aydinlatma">
+                <label class="form-check-label" for="erMobilAydinlatma">Aydınlatma</label>
+            </div>
+
+            <button class="btn btn-outline-secondary w-100 mt-3" type="button" id="erMobilFiltreTemizle">
+                Filtreleri Temizle
+            </button>
+
+            <button class="btn btn-success w-100 mt-2" type="button" data-bs-dismiss="offcanvas">
+                Sonuçları Göster
+            </button>
+
+        </div>
+    </div>
+
+
+    <footer class="er-footer py-4 mt-5">
+        <div class="container text-center small">
+            © 2026 Emek Rafı
+        </div>
+    </footer>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" id="erToastContainer" style="z-index: 1080;"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../Js/script.js"></script>
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const kartlar = Array.from(document.querySelectorAll(".er-urun"));
+    const kategoriKutulari = document.querySelectorAll("[data-er-category]");
+    const aramaKutusu = document.getElementById("erUrunArama");
+    const fiyatRange = document.getElementById("erFiyatRange");
+    const fiyatEtiket = document.getElementById("erFiyatEtiket");
+    const urunSayisi = document.getElementById("erUrunSayisi");
+    const sonucYok = document.getElementById("erSonucYok");
+    const siralama = document.getElementById("erUrunSirala");
+    const filtreTemizle = document.getElementById("erFiltreTemizle");
+    const mobilFiltreTemizle = document.getElementById("erMobilFiltreTemizle");
+    const sonucTemizle = document.getElementById("erSonucTemizle");
+    const grid = document.getElementById("erUrunGrid");
+
+    const trKucuk = metin => metin.toLocaleLowerCase("tr-TR");
+    const orijinalSira = [...kartlar];
+
+    function kategoriFiltrele() {
+        const seciliKategoriler = new Set(
+            [...kategoriKutulari]
+                .filter(kutu => kutu.checked)
+                .map(kutu => kutu.dataset.erCategory)
+        );
+
+        const aranan = trKucuk(aramaKutusu.value.trim());
+        const maxFiyat = Number(fiyatRange.value);
+
+        const seciliPuan = document.querySelector(
+            'input[name="erPuan"]:checked'
+        );
+
+        const minPuan = seciliPuan ? Number(seciliPuan.value) : 0;
+
+        let gorunenUrunSayisi = 0;
+
+        kartlar.forEach(kart => {
+            const kategori = kart.dataset.erCategory;
+            const urunAdi = trKucuk(kart.dataset.erName);
+            const fiyat = Number(kart.dataset.erPrice);
+            const puan = Number(kart.dataset.erRating);
+
+            const kategoriUygun =
+                seciliKategoriler.size === 0 ||
+                seciliKategoriler.has(kategori);
+
+            const aramaUygun =
+                urunAdi.includes(aranan) ||
+                kategori.includes(aranan);
+
+            const fiyatUygun = fiyat <= maxFiyat;
+            const puanUygun = puan >= minPuan;
+
+            const uygun =
+                kategoriUygun &&
+                aramaUygun &&
+                fiyatUygun &&
+                puanUygun;
+
+            kart.classList.toggle("d-none", !uygun);
+
+            if (uygun) {
+                gorunenUrunSayisi++;
+            }
+        });
+
+        urunSayisi.textContent = `(${gorunenUrunSayisi} ürün)`;
+        fiyatEtiket.textContent = `${maxFiyat}₺`;
+        sonucYok.classList.toggle("d-none", gorunenUrunSayisi > 0);
+    }
+
+    
+    kategoriKutulari.forEach(kutu => {
+        kutu.addEventListener("change", () => {
+            kategoriKutulari.forEach(digerKutu => {
+                if (
+                    digerKutu.dataset.erCategory ===
+                    kutu.dataset.erCategory
+                ) {
+                    digerKutu.checked = kutu.checked;
+                }
+            });
+
+            kategoriFiltrele();
+        });
+    });
+
+   
+    aramaKutusu.addEventListener("input", kategoriFiltrele);
+
+    
+    fiyatRange.addEventListener("input", kategoriFiltrele);
+
+    
+    document.querySelectorAll('input[name="erPuan"]').forEach(radio => {
+        radio.addEventListener("change", kategoriFiltrele);
+    });
+
+    
+    function filtreleriTemizle() {
+        aramaKutusu.value = "";
+        fiyatRange.value = "1000";
+
+        kategoriKutulari.forEach(kutu => {
+            kutu.checked = false;
+        });
+
+        const tumPuanlar = document.getElementById("erPuan0");
+
+        if (tumPuanlar) {
+            tumPuanlar.checked = true;
+        }
+
+        siralama.value = "varsayilan";
+
+        orijinalSira.forEach(kart => {
+            grid.appendChild(kart);
+        });
+
+        kategoriFiltrele();
+    }
+
+    if (filtreTemizle) {
+        filtreTemizle.addEventListener("click", filtreleriTemizle);
+    }
+
+    if (mobilFiltreTemizle) {
+        mobilFiltreTemizle.addEventListener("click", filtreleriTemizle);
+    }
+
+    if (sonucTemizle) {
+        sonucTemizle.addEventListener("click", filtreleriTemizle);
+    }
+
+    
+    siralama.addEventListener("change", () => {
+        const tur = siralama.value;
+        const siraliKartlar = [...kartlar];
+
+        if (tur === "artan") {
+            siraliKartlar.sort(
+                (a, b) =>
+                    Number(a.dataset.erPrice) -
+                    Number(b.dataset.erPrice)
+            );
+        } else if (tur === "azalan") {
+            siraliKartlar.sort(
+                (a, b) =>
+                    Number(b.dataset.erPrice) -
+                    Number(a.dataset.erPrice)
+            );
+        } else if (tur === "yeni") {
+            siraliKartlar.reverse();
+        } else {
+            siraliKartlar.splice(0, siraliKartlar.length, ...orijinalSira);
+        }
+
+        siraliKartlar.forEach(kart => {
+            grid.appendChild(kart);
+        });
+
+        kategoriFiltrele();
+    });
+
+   
+    kategoriFiltrele();
+});
+</script>

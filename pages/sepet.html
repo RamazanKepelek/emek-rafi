@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepetim | Emek Rafı</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <nav class="navbar navbar-expand-lg navbar-dark er-navbar sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">🌿 Emek Rafı</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#erAnaMenu" aria-controls="erAnaMenu"
+                aria-expanded="false" aria-label="Menüyü aç/kapat">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="erAnaMenu">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="urunler.html">Ürünler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kampanyalar.html">Kampanyalar</a>
+                    </li>
+                </ul>
+
+                <a href="giris.html" class="btn btn-outline-light btn-sm">Giriş Yap</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-4 flex-grow-1">
+
+        <h1 class="h3 mb-4">Sepetim</h1>
+
+        <div id="erBosSepet" class="text-center py-5 d-none">
+            <div class="display-1 mb-3" aria-hidden="true">🧺</div>
+            <h2 class="h4">Sepetiniz boş</h2>
+            <p class="text-muted">Henüz sepetinize ürün eklemediniz.</p>
+            <a href="urunler.html" class="btn btn-success">Ürünlere Göz At</a>
+        </div>
+
+        <div id="erDoluSepet">
+
+            <div class="alert alert-light border mb-4" role="status">
+                <p class="mb-2 small" id="erKargoMesaj"></p>
+
+                <div class="progress" role="progressbar"
+                    aria-label="Ücretsiz kargo ilerlemesi"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar bg-success" id="erKargoBar" style="width: 0%">
+                        0%
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-lg-8">
+                    <div class="table-responsive border rounded-3">
+                        <table class="table align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col">Ürün</th>
+                                    <th scope="col">Birim Fiyat</th>
+                                    <th scope="col">Adet</th>
+                                    <th scope="col">Toplam</th>
+                                    <th scope="col">
+                                        <span class="visually-hidden">Kaldır</span>
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="erSepetGovde"></tbody>
+                        </table>
+                    </div>
+
+                    <a href="urunler.html" class="btn btn-outline-secondary mt-3">
+                        <i class="bi bi-arrow-left me-1" aria-hidden="true"></i>
+                        Alışverişe Devam Et
+                    </a>
+
+                    <button type="button" class="btn btn-outline-danger mt-3 ms-2" id="erSepetiBosalt">
+                        Sepeti Boşalt
+                    </button>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm rounded-4 p-4">
+
+                        <h2 class="h5 mb-3">Sipariş Özeti</h2>
+
+                        <label for="erKuponInput" class="form-label small">Kupon Kodu</label>
+
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="erKuponInput"
+                                placeholder="EMEK10" autocomplete="off">
+                            <button class="btn btn-outline-secondary" type="button" id="erKuponBtn">
+                                Uygula
+                            </button>
+                        </div>
+
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item d-flex justify-content-between px-0">
+                                <span>Ara Toplam</span>
+                                <span id="erAraToplam">₺0</span>
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between px-0 d-none"
+                                id="erIndirimSatir">
+                                <span>İndirim (%10)</span>
+                                <span class="text-success" id="erIndirimTutar">₺0</span>
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between px-0">
+                                <span>Kargo</span>
+                                <span id="erKargoUcret">₺0</span>
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between px-0 fw-bold">
+                                <span>Genel Toplam</span>
+                                <span id="erGenelToplam">₺0</span>
+                            </li>
+                        </ul>
+
+                        <button type="button" class="btn btn-success w-100"
+                            data-bs-toggle="modal" data-bs-target="#erOnayModal" id="erSiparisBtn">
+                            Siparişi Tamamla
+                        </button>
+
+                        <button type="button" class="btn btn-outline-secondary w-100 mt-2"
+                            id="erSepetiYazdir">
+                            <i class="bi bi-printer me-1" aria-hidden="true"></i>
+                            Sepeti Yazdır
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="erOnayModal" tabindex="-1"
+        aria-labelledby="erOnayModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h2 class="modal-title h5" id="erOnayModalLabel">
+                        Siparişi Onaylıyor musunuz?
+                    </h2>
+                    <button type="button" class="btn-close"
+                        data-bs-dismiss="modal" aria-label="Kapat"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p>Bu sayfa bir proje demosudur. Gerçek bir ödeme yapılmayacaktır.</p>
+                    <p class="fw-bold mb-0">
+                        Toplam Tutar: <span id="erModalToplam">₺0</span>
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary"
+                        data-bs-dismiss="modal">
+                        Vazgeç
+                    </button>
+
+                    <button type="button" class="btn btn-success"
+                        data-bs-dismiss="modal" id="erSiparisOnaylaBtn">
+                        Onayla
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="er-footer py-4 mt-5">
+        <div class="container text-center small">
+            © 2026 Emek Rafı
+        </div>
+    </footer>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3"
+        id="erToastContainer" style="z-index: 1080;"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../Js/script.js"></script>
+
+    <script>
+        (() => {
+            const SEPET_ANAHTARI = "er_sepet";
+            const UCRETSIZ_KARGO_ESIGI = 750;
+            const KARGO_UCRETI = 49;
+
+            let kuponAktif = false;
+
+            const eleman = id => document.getElementById(id);
+
+            const paraFormat = tutar =>
+                new Intl.NumberFormat("tr-TR", {
+                    style: "currency",
+                    currency: "TRY",
+                    maximumFractionDigits: 0
+                }).format(tutar);
+
+            function sepetiOku() {
+                try {
+                    const kayitli = JSON.parse(
+                        localStorage.getItem(SEPET_ANAHTARI) || "[]"
+                    );
+
+                    if (!Array.isArray(kayitli)) {
+                        return [];
+                    }
+
+                    return kayitli.map((urun, index) => ({
+                        id: String(urun.id ?? index),
+                        ad: String(urun.ad ?? urun.name ?? "Ürün"),
+                        fiyat: Math.max(
+                            0,
+                            Number(urun.fiyat ?? urun.price ?? 0) || 0
+                        ),
+                        adet: Math.min(
+                            99,
+                            Math.max(
+                                1,
+                                parseInt(urun.adet ?? urun.quantity ?? 1, 10) || 1
+                            )
+                        ),
+                        emoji: String(urun.emoji ?? "🧺")
+                    }));
+                } catch (hata) {
+                    return [];
+                }
+            }
+
+            function sepetiKaydet(sepet) {
+                localStorage.setItem(SEPET_ANAHTARI, JSON.stringify(sepet));
+            }
+
+            function bildirimGoster(mesaj, tur = "success") {
+                const kapsayici = eleman("erToastContainer");
+                const toast = document.createElement("div");
+
+                toast.className = `toast align-items-center text-bg-${tur} border-0`;
+                toast.setAttribute("role", "status");
+                toast.setAttribute("aria-live", "polite");
+                toast.setAttribute("aria-atomic", "true");
+
+                const govde = document.createElement("div");
+                govde.className = "d-flex";
+
+                const metin = document.createElement("div");
+                metin.className = "toast-body";
+                metin.textContent = mesaj;
+
+                const kapat = document.createElement("button");
+                kapat.type = "button";
+                kapat.className = "btn-close btn-close-white me-2 m-auto";
+                kapat.setAttribute("data-bs-dismiss", "toast");
+                kapat.setAttribute("aria-label", "Kapat");
+
+                govde.append(metin, kapat);
+                toast.appendChild(govde);
+                kapsayici.appendChild(toast);
+
+                const toastNesnesi = new bootstrap.Toast(toast, {
+                    delay: 3000
+                });
+
+                toast.addEventListener("hidden.bs.toast", () => toast.remove());
+                toastNesnesi.show();
+            }
+
+            function sepetAraToplam(sepet) {
+                return sepet.reduce(
+                    (toplam, urun) => toplam + urun.fiyat * urun.adet,
+                    0
+                );
+            }
+
+            function sepetiCiz() {
+                const sepet = sepetiOku();
+                const bos = eleman("erBosSepet");
+                const dolu = eleman("erDoluSepet");
+
+                bos.classList.toggle("d-none", sepet.length > 0);
+                dolu.classList.toggle("d-none", sepet.length === 0);
+
+                if (sepet.length === 0) {
+                    return;
+                }
+
+                const govde = eleman("erSepetGovde");
+                govde.replaceChildren();
+
+                sepet.forEach(urun => {
+                    const satir = document.createElement("tr");
+
+                    const urunHucre = document.createElement("td");
+                    const urunBilgi = document.createElement("div");
+                    urunBilgi.className = "d-flex align-items-center gap-2";
+
+                    const emoji = document.createElement("span");
+                    emoji.className = "fs-3";
+                    emoji.setAttribute("aria-hidden", "true");
+                    emoji.textContent = urun.emoji;
+
+                    const ad = document.createElement("span");
+                    ad.textContent = urun.ad;
+
+                    urunBilgi.append(emoji, ad);
+                    urunHucre.appendChild(urunBilgi);
+
+                    const fiyatHucre = document.createElement("td");
+                    fiyatHucre.textContent = paraFormat(urun.fiyat);
+
+                    const adetHucre = document.createElement("td");
+                    adetHucre.style.width = "110px";
+
+                    const adetInput = document.createElement("input");
+                    adetInput.type = "number";
+                    adetInput.className = "form-control form-control-sm";
+                    adetInput.value = urun.adet;
+                    adetInput.min = "1";
+                    adetInput.max = "99";
+                    adetInput.setAttribute("aria-label", urun.ad + " adet");
+                    adetInput.dataset.id = urun.id;
+
+                    adetHucre.appendChild(adetInput);
+
+                    const toplamHucre = document.createElement("td");
+                    toplamHucre.textContent = paraFormat(urun.fiyat * urun.adet);
+
+                    const silHucre = document.createElement("td");
+
+                    const silButonu = document.createElement("button");
+                    silButonu.type = "button";
+                    silButonu.className = "btn btn-sm btn-outline-danger";
+                    silButonu.textContent = "×";
+                    silButonu.dataset.sil = urun.id;
+                    silButonu.setAttribute(
+                        "aria-label",
+                        urun.ad + " ürününü sepetten kaldır"
+                    );
+
+                    silHucre.appendChild(silButonu);
+
+                    satir.append(
+                        urunHucre,
+                        fiyatHucre,
+                        adetHucre,
+                        toplamHucre,
+                        silHucre
+                    );
+
+                    govde.appendChild(satir);
+                });
+
+                const araToplam = sepetAraToplam(sepet);
+                const indirim = kuponAktif ? Math.round(araToplam * 0.1) : 0;
+                const indirimliToplam = araToplam - indirim;
+                const kargo = indirimliToplam >= UCRETSIZ_KARGO_ESIGI
+                    ? 0
+                    : KARGO_UCRETI;
+                const genelToplam = indirimliToplam + kargo;
+
+                eleman("erAraToplam").textContent = paraFormat(araToplam);
+
+                eleman("erIndirimSatir").classList.toggle(
+                    "d-none",
+                    !kuponAktif
+                );
+
+                eleman("erIndirimTutar").textContent =
+                    "-" + paraFormat(indirim);
+
+                eleman("erKargoUcret").textContent =
+                    kargo === 0 ? "Ücretsiz" : paraFormat(kargo);
+
+                eleman("erGenelToplam").textContent = paraFormat(genelToplam);
+                eleman("erModalToplam").textContent = paraFormat(genelToplam);
+
+                const yuzde = Math.min(
+                    100,
+                    Math.round((araToplam / UCRETSIZ_KARGO_ESIGI) * 100)
+                );
+
+                const bar = eleman("erKargoBar");
+                bar.style.width = yuzde + "%";
+                bar.textContent = yuzde + "%";
+                bar.parentElement.setAttribute("aria-valuenow", yuzde);
+
+                eleman("erKargoMesaj").textContent =
+                    araToplam >= UCRETSIZ_KARGO_ESIGI
+                        ? "Tebrikler, kargonuz ücretsiz!"
+                        : paraFormat(UCRETSIZ_KARGO_ESIGI - araToplam) +
+                          " daha alışveriş yapın, kargo ücretsiz olsun!";
+            }
+
+            document.addEventListener("DOMContentLoaded", () => {
+                
+
+                sepetiCiz();
+
+                eleman("erSepetGovde").addEventListener("click", event => {
+                    const buton = event.target.closest("[data-sil]");
+
+                    if (!buton) {
+                        return;
+                    }
+
+                    const sepet = sepetiOku().filter(
+                        urun => urun.id !== buton.dataset.sil
+                    );
+
+                    sepetiKaydet(sepet);
+                    sepetiCiz();
+                    bildirimGoster("Ürün sepetten kaldırıldı.", "success");
+                });
+
+                eleman("erSepetGovde").addEventListener("change", event => {
+                    if (!event.target.matches("input[data-id]")) {
+                        return;
+                    }
+
+                    const id = event.target.dataset.id;
+                    const adet = Math.min(
+                        99,
+                        Math.max(1, parseInt(event.target.value, 10) || 1)
+                    );
+
+                    const sepet = sepetiOku().map(urun =>
+                        urun.id === id ? { ...urun, adet } : urun
+                    );
+
+                    sepetiKaydet(sepet);
+                    sepetiCiz();
+                });
+
+                eleman("erSepetiBosalt").addEventListener("click", () => {
+                    sepetiKaydet([]);
+                    kuponAktif = false;
+                    sepetiCiz();
+                    bildirimGoster("Sepet boşaltıldı.", "success");
+                });
+
+                eleman("erKuponBtn").addEventListener("click", () => {
+                    const kod = eleman("erKuponInput").value
+                        .trim()
+                        .toUpperCase();
+
+                    if (kod === "EMEK10") {
+                        kuponAktif = true;
+                        bildirimGoster("%10 indirim uygulandı.", "success");
+                    } else {
+                        kuponAktif = false;
+                        bildirimGoster("Kupon kodu geçersiz.", "danger");
+                    }
+
+                    sepetiCiz();
+                });
+
+                eleman("erSepetiYazdir").addEventListener("click", () => {
+                    window.print();
+                });
+
+                eleman("erSiparisOnaylaBtn").addEventListener("click", () => {
+                    sepetiKaydet([]);
+                    kuponAktif = false;
+                    sepetiCiz();
+                    bildirimGoster(
+                        "Siparişiniz alındı. Bu bir demo işlemidir.",
+                        "success"
+                    );
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>
